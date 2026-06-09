@@ -276,7 +276,14 @@
   const gate = document.getElementById('gate');
   const gform = document.getElementById('gform');
   const gemail = document.getElementById('gemail');
-  const DISCOUNT = 40;
+  const TIERS = [
+    { pct: 40, code: 'DIGITAL4SOFIALLAB' },
+    { pct: 30, code: 'DIGITAL4SOFIALLAB30' },
+    { pct: 20, code: 'DIGITAL4SOFIALLAB20' },
+  ];
+  const TIER = TIERS[(Math.random() * TIERS.length) | 0];
+  const DISCOUNT = TIER.pct;
+  document.getElementById('codeVal').textContent = TIER.code;
   let unlocked = false;
 
   /* ───────────────────────────────────────────────────────────
@@ -446,10 +453,10 @@
   // Copy code
   const codeBtn = document.getElementById('codeBtn');
   const cp = document.getElementById('cp');
-  const codeVal = document.getElementById('codeVal').textContent.trim();
   codeBtn.addEventListener('click', () => {
+    const val = document.getElementById('codeVal').textContent.trim();
     const done = () => { codeBtn.classList.add('copied'); cp.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg>'; setTimeout(() => { codeBtn.classList.remove('copied'); cp.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>'; }, 1600); };
-    if (navigator.clipboard) { navigator.clipboard.writeText(codeVal).then(done).catch(done); } else { done(); }
+    if (navigator.clipboard) { navigator.clipboard.writeText(val).then(done).catch(done); } else { done(); }
   });
 
   // init + resize
