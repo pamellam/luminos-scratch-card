@@ -1,0 +1,146 @@
+/* Luminos Labs — Design Tokens
+ * Source of truth: luminoslabs-landing/ React app
+ * Style: Apple-inspired — font-light, tight tracking, black bg,
+ * purple→blue→cyan gradient accent for brand moments only.
+ */
+
+:root {
+  /* ── Brand gradient stops (Tailwind values, verbatim) ─────── */
+  --brand-purple-500: #a855f7;   /* from-purple-500, focus ring, CTA gradient start */
+  --brand-purple-400: #c084fc;   /* from-purple-400, gradient text start */
+  --brand-purple-300: #d8b4fe;   /* mid stop in hero gradient text */
+  --brand-blue-500:   #3b82f6;   /* to-blue-500, CTA gradient end */
+  --brand-blue-400:   #60a5fa;   /* to-blue-400, gradient text end */
+  --brand-cyan-400:   #22d3ee;   /* cyan accent in 3-stop headlines */
+  --brand-cyan-500:   #06b6d4;
+  --brand-indigo-500: #6366f1;   /* second ambient orb */
+  --brand-teal-500:   #14b8a6;
+
+  /* Hero gradient text (purple-400 → blue-400) */
+  --gradient-text: linear-gradient(90deg, var(--brand-purple-400), var(--brand-blue-400));
+  /* 3-stop headline (purple → blue → cyan) */
+  --gradient-text-3: linear-gradient(90deg, var(--brand-purple-400), var(--brand-blue-400), var(--brand-cyan-400));
+  /* Primary button (purple-500 → blue-500) */
+  --gradient-cta: linear-gradient(90deg, var(--brand-purple-500), var(--brand-blue-500));
+  /* Hover inversion on button (blue → purple) */
+  --gradient-cta-hover: linear-gradient(90deg, var(--brand-blue-500), var(--brand-purple-500));
+  /* Benefit card gradients */
+  --gradient-benefit-1: linear-gradient(135deg, var(--brand-purple-500), var(--brand-blue-500));
+  --gradient-benefit-2: linear-gradient(135deg, var(--brand-blue-500), var(--brand-cyan-500));
+  --gradient-benefit-3: linear-gradient(135deg, var(--brand-cyan-500), var(--brand-teal-500));
+
+  /* ── Neutrals — pure black + alpha ────────────────────────── */
+  --bg: #000000;
+  --bg-panel: rgba(255,255,255,0.03);     /* bg-white/[0.03] */
+  --bg-elevated: rgba(255,255,255,0.05);  /* bg-white/[0.05] */
+  --bg-hover: rgba(255,255,255,0.10);     /* bg-white/10 on focus */
+  --border-hair: rgba(255,255,255,0.05);  /* border-white/5 */
+  --border: rgba(255,255,255,0.10);       /* border-white/10 */
+  --border-strong: rgba(255,255,255,0.20);/* border-white/20 */
+  --fg: #ffffff;
+  --fg-muted: #9ca3af;  /* gray-400 — body copy */
+  --fg-subtle: #6b7280; /* gray-500 — placeholder, meta */
+  --fg-dim: #374151;    /* gray-700 */
+
+  /* ── Semantic ─────────────────────────────────────────────── */
+  --success: #4ade80;   /* green-400 */
+  --warning: #fbbf24;   /* amber-400 */
+  --danger:  #f87171;   /* red-400 */
+
+  /* ── Typography ───────────────────────────────────────────── */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Weights — light is the signature */
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Tracking */
+  --tracking-tight: -0.02em;  /* headings h1-h3 */
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;    /* uppercase section eyebrows */
+
+  /* Scale (desktop) — fluid sizes from App.css */
+  --text-xs: 0.75rem;     /* 12 */
+  --text-sm: 0.875rem;    /* 14 */
+  --text-base: 1rem;      /* 16 */
+  --text-lg: 1.125rem;    /* 18 */
+  --text-xl: 1.25rem;     /* 20 */
+  --text-2xl: 1.5rem;     /* 24 — card title */
+  --text-3xl: 1.875rem;   /* 30 */
+  --text-4xl: 2.25rem;    /* 36 */
+  --text-5xl: 3rem;       /* 48 — h1 desktop */
+  --text-6xl: 3.75rem;    /* 60 — section h2 */
+  --text-7xl: 4.5rem;     /* 72 */
+  --text-8xl: 6rem;       /* 96 — hero xl */
+  --text-9xl: 8rem;       /* 128 — hero 2xl */
+
+  /* ── Radii ────────────────────────────────────────────────── */
+  --radius-sm: 0.5rem;   /* 8  — buttons, pills */
+  --radius-md: 0.75rem;  /* 12 — inputs */
+  --radius-lg: 1rem;     /* 16 — cards */
+  --radius-xl: 1.5rem;   /* 24 — large cards / stats panel */
+  --radius-2xl: 2rem;    /* 32 — hover glow halo */
+  --radius-full: 9999px;
+
+  /* ── Shadows & glows ──────────────────────────────────────── */
+  --glow-focus: 0 0 30px rgba(168, 85, 247, 0.3);     /* purple-500 @ 30% */
+  --glow-hover-soft: 0 0 60px rgba(168, 85, 247, 0.2);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 10px 30px -10px rgba(0,0,0,0.6);
+  --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.85);
+
+  /* ── Button shadows (the "lift") ──────────────────────────── */
+  /* Primary — purple+blue stacked drop with inset top hairline */
+  --btn-primary-shadow:
+    0 1px 0 rgba(255,255,255,0.35) inset,
+    0 -1px 0 rgba(0,0,0,0.18) inset,
+    0 1px 2px rgba(0,0,0,0.4),
+    0 8px 24px -6px rgba(168,85,247,0.55),
+    0 16px 48px -16px rgba(59,130,246,0.45);
+  --btn-primary-shadow-hover:
+    0 1px 0 rgba(255,255,255,0.4) inset,
+    0 -1px 0 rgba(0,0,0,0.18) inset,
+    0 1px 2px rgba(0,0,0,0.4),
+    0 12px 32px -6px rgba(168,85,247,0.7),
+    0 20px 60px -16px rgba(59,130,246,0.55);
+  /* Secondary — white pill with soft drop */
+  --btn-secondary-shadow:
+    0 1px 0 rgba(255,255,255,0.9) inset,
+    0 -1px 0 rgba(0,0,0,0.08) inset,
+    0 1px 2px rgba(0,0,0,0.3),
+    0 6px 18px -4px rgba(0,0,0,0.5);
+  /* Tertiary — purple-tinted glass */
+  --btn-tertiary-shadow:
+    0 1px 0 rgba(255,255,255,0.18) inset,
+    0 0 0 1px rgba(168,85,247,0.35),
+    0 4px 14px -4px rgba(168,85,247,0.3);
+
+  /* ── Button gradients ─────────────────────────────────────── */
+  --gradient-btn-primary: linear-gradient(180deg, #b46cf9 0%, #a855f7 50%, #7c3aed 100%);
+  --gradient-btn-primary-hover: linear-gradient(180deg, #c084fc 0%, #b06cf9 50%, #8b5cf6 100%);
+  --gradient-btn-secondary: linear-gradient(180deg, #ffffff 0%, #f1f1f4 100%);
+  --gradient-btn-tertiary: linear-gradient(180deg, rgba(168,85,247,0.18) 0%, rgba(168,85,247,0.10) 100%);
+  --gradient-btn-destructive: linear-gradient(180deg, #f87171 0%, #ef4444 50%, #b91c1c 100%);
+
+  /* ── Motion ───────────────────────────────────────────────── */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 200ms;
+  --dur-med:  300ms;
+  --dur-slow: 700ms;
+  /* Framer Motion conventions used in code:
+     hero fade-up: duration 0.8, easeOut, staggerChildren 0.1
+     button hover: scale 1.05, tap scale 0.95
+     orb float: 12–15s easeInOut infinite */
+}
+
+/* Base reset aligned with App.css */
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-sans); font-weight: var(--weight-light); -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-weight: var(--weight-light); letter-spacing: var(--tracking-tight); }
+p { font-weight: var(--weight-light); }
+button:active { transform: scale(0.98); }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--brand-purple-500); outline-offset: 2px; }
