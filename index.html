@@ -509,7 +509,7 @@
   });
   gemail.addEventListener('input', () => gemail.classList.remove('err'));
 
-  setup();
+  requestAnimationFrame(() => requestAnimationFrame(setup));
   let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(setup, 150); });
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     // still scratchable; no auto behavior needed
