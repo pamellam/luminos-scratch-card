@@ -51,7 +51,7 @@ export default async function handler(req, res) {
 
         <!-- Logo -->
         <tr><td align="center" style="padding-bottom:32px;">
-          <img src="https://luminos-scratch-card.vercel.app/assets/logo-color-white.png" alt="LuminosLabs" height="28" style="display:block;" />
+          <img src="https://promo.luminoslabs.ai/assets/logo-color-white.png" alt="LuminosLabs" height="28" style="display:block;" />
         </td></tr>
 
         <!-- Card -->
