@@ -285,32 +285,12 @@
   const DISCOUNT = TIER.pct;
   let unlocked = false;
 
-  /* ───────────────────────────────────────────────────────────
-     BREVO LIST CAPTURE
-     1. In Brevo: Contacts → Forms → create a form that adds to List #2.
-     2. Copy the form's action URL (looks like https://XXXXX.sibforms.com/serve/MUIF...).
-     3. Paste it below. Emails then post straight into List #2.
-     (No API key is exposed — this uses Brevo's public form endpoint.)
-  ─────────────────────────────────────────────────────────── */
-  const BREVO_FORM_ACTION = ''; // ← paste your Brevo sibforms URL here
-  const BREVO_EMAIL_FIELD = 'EMAIL';
   function submitToBrevo(email) {
-    if (!BREVO_FORM_ACTION) return;
-    let sink = document.getElementById('brevoSink');
-    if (!sink) {
-      sink = document.createElement('iframe');
-      sink.id = 'brevoSink'; sink.name = 'brevoSink'; sink.style.display = 'none';
-      document.body.appendChild(sink);
-    }
-    const f = document.createElement('form');
-    f.action = BREVO_FORM_ACTION; f.method = 'POST'; f.target = 'brevoSink'; f.style.display = 'none';
-    const add = (n, v, t) => { const i = document.createElement('input'); i.type = t || 'hidden'; i.name = n; i.value = v; f.appendChild(i); };
-    add(BREVO_EMAIL_FIELD, email, 'email');
-    add('email_address_check', '');   // Brevo honeypot — must stay empty
-    add('locale', 'en');
-    document.body.appendChild(f);
-    f.submit();
-    setTimeout(() => f.remove(), 2500);
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ email }),
+    }).catch(() => {}); // fire-and-forget — gate opens regardless
   }
   let W = 0, H = 0, dpr = 1, revealed = false, started = false, last = null, lastSpark = 0;
 
