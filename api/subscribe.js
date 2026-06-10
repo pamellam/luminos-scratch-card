@@ -102,7 +102,7 @@ export default async function handler(req, res) {
         'api-key': apiKey,
       },
       body: JSON.stringify({
-        sender: { name: 'LuminosLabs', email: 'hello@luminoslabs.ai' },
+        sender: { name: 'LuminosLabs', email: 'superadmin@luminoslabs.ai' },
         to: [{ email }],
         subject: `Your ${discount}% founding-member discount — LuminosLabs`,
         htmlContent: html,
