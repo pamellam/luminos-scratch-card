@@ -283,7 +283,6 @@
   ];
   const TIER = TIERS[(Math.random() * TIERS.length) | 0];
   const DISCOUNT = TIER.pct;
-  document.getElementById('codeVal').textContent = TIER.code;
   let unlocked = false;
 
   /* ───────────────────────────────────────────────────────────
@@ -379,6 +378,7 @@
 
   function reveal() {
     if (revealed) return; revealed = true;
+    document.getElementById('codeVal').textContent = TIER.code;
     card.classList.add('revealed');
     // hard-clear the coating so no residual bands remain
     ctx.clearRect(0, 0, canvas.width, canvas.height);
