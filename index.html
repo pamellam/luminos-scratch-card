@@ -289,7 +289,7 @@
     fetch('/api/subscribe', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, code: TIER.code, pct: TIER.pct }),
     }).catch(() => {}); // fire-and-forget — gate opens regardless
   }
   let W = 0, H = 0, dpr = 1, revealed = false, started = false, last = null, lastSpark = 0;
